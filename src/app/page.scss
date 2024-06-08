@@ -1,0 +1,70 @@
+@import "../app/utils.scss";
+
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#level-title {
+  font-size: $size-5xl;
+  margin: $size-4xl;
+  color: $title;
+  text-align: center;
+}
+
+h3 {
+  font-size: $size-2xl;
+  margin-bottom: $size-xl;
+  color: $title;
+  text-align: center;
+}
+
+.btn-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas:
+    "btn1 btn2"
+    "btn3 btn4";
+}
+
+.btn {
+  margin: 25px;
+  height: 200px;
+  width: 200px;
+  border: 10px solid black;
+  border-radius: 20%;
+  user-select: none;
+}
+
+.game-over {
+  background-color: red;
+  opacity: 0.8;
+}
+
+.red {
+  background-color: red;
+  grid-area: btn2;
+}
+
+.green {
+  background-color: green;
+  grid-area: btn1;
+}
+
+.blue {
+  background-color: blue;
+  grid-area: btn4;
+}
+
+.yellow {
+  background-color: yellow;
+  grid-area: btn3;
+}
+
+.pressed {
+  box-shadow: 0 0 20px white;
+  background-color: grey;
+}
