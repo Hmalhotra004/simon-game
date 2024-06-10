@@ -76,6 +76,7 @@ const Home = () => {
   };
 
   const animate = (btn: string) => {
+    
     // setScale(0.6);
   };
 
