@@ -7,16 +7,24 @@ import "./page.scss";
 const COLOURS = ["green", "red", "yellow", "blue"];
 
 const Home = () => {
+  //states
   const [isStart, setIsStart] = useState(false);
   const [level, setLevel] = useState(1);
+
+  //effects
   useEffect(() => {
     document.addEventListener("keydown", (e: KeyboardEvent) => {
       if (e.keyCode === 13) {
-        setIsStart(true);
+        if (!isStart) {
+          setIsStart(true);
+        } else {
+          setLevel(1);
+        }
       }
     });
-  }, []);
+  }, [isStart]);
 
+  //functions
   const handleBtnClick = () => {
     setLevel(pv => pv + 1);
   };
