@@ -8,19 +8,10 @@ const COLOURS = ["green", "red", "yellow", "blue"];
 
 const Home = () => {
   //states
-  const [isStart, setIsStart] = useState({ start: false, title: "Press Enter to Start", bg: "bg" });
-  const [level, setLevel] = useState(0);
+  const [isStart, setIsStart] = useState(false);
+  const [level, setLevel] = useState({ value: 0, title: "Press Enter to Start", bg: "bg" });
   const [gamePattern, setGamePattern] = useState<string[]>([]);
   const [userPattern, setUserPattern] = useState<string[]>([]);
-
-  let title;
-  if (!isStart) {
-    title = "Press Enter to Start";
-  } else {
-    title = `Level: ${level}`;
-  }
-
-  let bg = "bg";
 
   //effects
   useEffect(() => {
@@ -29,9 +20,7 @@ const Home = () => {
         if (!isStart) {
           StartOver();
           nextSequence();
-          setIsStart(pv => {
-            return { start: true, title: `Level: ${level}`, bg: "bg" };
-          });
+          setIsStart(true);
           console.log("start");
         } else {
           StartOver();
@@ -52,14 +41,18 @@ const Home = () => {
       }
     } else {
       playSound("wrong");
-      setIsStart(pv => {
-        return { start: false, title: `Game Over, Press Enter to Restart`, bg: "game-over" };
-      });
+      setIsStart(false);
     }
   };
 
   const nextSequence = () => {
-    setLevel(pv => pv + 1);
+    setLevel(pv => {
+      return {
+        value: pv.value + 1,
+        title: `Level ${level.value + 1}`,
+        bg: "bg",
+      };
+    });
     const randomNumber = Math.floor(Math.random() * 4);
     const randomChosenColour = COLOURS[randomNumber];
     setGamePattern(pv => [...pv, randomChosenColour]);
@@ -81,18 +74,24 @@ const Home = () => {
   }
 
   const StartOver = () => {
-    setLevel(0);
+    setLevel(pv => {
+      return {
+        value: 0,
+        title: `Level ${level.value + 1}`,
+        bg: "bg",
+      };
+    });
     setGamePattern([]);
     setUserPattern([]);
     console.log("start over");
   };
 
   return (
-    <section className={isStart.bg}>
+    <section className={level.bg}>
       <section className="container">
         <NavBar />
         <div className="main">
-          <h1 id="level-title">{isStart.title}</h1>
+          <h1 id="level-title">{level.title}</h1>
           {/* <h3 id="high">
             High Score:<span id="high_value"> 0</span>
           </h3> */}
