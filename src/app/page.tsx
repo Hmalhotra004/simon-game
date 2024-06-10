@@ -38,12 +38,18 @@ const Home = () => {
     const randomChosenColour = COLOURS[randomNumber];
     setGamePattern(pv => [...pv, randomChosenColour]);
     console.log(gamePattern);
+    playSound(randomChosenColour);
   };
 
   const handleBtnClick = () => {
     setLevel(pv => pv + 1);
     console.log(level);
   };
+
+  function playSound(name: string) {
+    var audio = new Audio(`/sounds/${name}.mp3`);
+    audio.play();
+  }
 
   return (
     <section className="bg">
