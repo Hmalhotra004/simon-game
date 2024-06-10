@@ -44,6 +44,7 @@ const Home = () => {
     } else {
       playSound("wrong");
       bg = "game-over";
+      title = "Game Over, Press Enter to Restart";
     }
   };
 
@@ -76,12 +77,19 @@ const Home = () => {
     console.log("start over");
   };
 
+  let title;
+  if (!isStart) {
+    title = "Press Enter to Start";
+  } else {
+    title = `Level: ${level}`;
+  }
+
   return (
     <section className={bg}>
       <section className="container">
         <NavBar />
         <div className="main">
-          <h1 id="level-title">{isStart ? `Level: ${level}` : "Press Enter to Start"}</h1>
+          <h1 id="level-title">{title}</h1>
           {/* <h3 id="high">
             High Score:<span id="high_value"> 0</span>
           </h3> */}
