@@ -4,7 +4,7 @@ const COLOURS = ["green", "red", "yellow", "blue"];
 
 const Home = () => {
   return (
-    <section>
+    <>
       <div className="main">
         <h1 id="level-title">Press Enter to Start</h1>
         <h3>
@@ -33,7 +33,7 @@ const Home = () => {
           ></button>
         </div>
       </div>
-    </section>
+    </>
   );
 };
 

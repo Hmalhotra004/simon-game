@@ -1,21 +1,24 @@
 @import "../app/utils.scss";
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 
 .main {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  font-family: "Press Start 2P", cursive;
+  background-color: $bg;
 }
 
 #level-title {
-  font-size: $size-5xl;
+  font-size: clamp($size-2xl, 3vw, $size-7xl);
   margin: $size-4xl;
   color: $title;
   text-align: center;
 }
 
 h3 {
-  font-size: $size-2xl;
+  font-size: clamp($size-base, 2vw, $size-3xl);
   margin-bottom: $size-xl;
   color: $title;
   text-align: center;
@@ -25,14 +28,18 @@ h3 {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 2rem;
   grid-template-areas:
     "btn1 btn2"
     "btn3 btn4";
 }
 
 .btn {
-  margin: 25px;
+  // margin: 25px;
   height: 200px;
+  // width: clamp(100px, 100%, 200px);
+  // height: clamp(100px, 100%, 200px);
   width: 200px;
   border: 10px solid black;
   border-radius: 20%;
