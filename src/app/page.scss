@@ -1,5 +1,5 @@
-@import "../app/utils.scss";
 @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+@import "../app/utils.scss";
 
 .bg {
   background-color: $bg;
@@ -15,18 +15,19 @@
   align-items: center;
   flex-direction: column;
   font-family: "Press Start 2P", cursive;
+  font-weight: 400;
   overflow-y: hidden;
 }
 
 #level-title {
-  font-size: clamp($size-2xl, 3vw, $size-7xl);
+  font-size: clamp($size-2xl, 3vw, $size-6xl);
   margin: $size-4xl;
   color: $title;
   text-align: center;
 }
 
 #high {
-  font-size: clamp($size-base, 2vw, $size-3xl);
+  font-size: clamp($size-lg, 2vw, $size-3xl);
   margin-bottom: $size-xl;
   color: $title;
   text-align: center;
