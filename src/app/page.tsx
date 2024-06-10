@@ -17,7 +17,7 @@ const Home = () => {
   useEffect(() => {
     document.addEventListener("keydown", (e: KeyboardEvent) => {
       console.log(e.keyCode);
-      if (e.keyCode === 32) {
+      if (e.keyCode === 13) {
         setIsStart(true);
         setLevel(pv => pv + 1);
         nextSequence();
@@ -36,7 +36,6 @@ const Home = () => {
   };
 
   const handleBtnClick = () => {
-    setLevel(pv => pv + 1);
     console.log(level);
   };
 
