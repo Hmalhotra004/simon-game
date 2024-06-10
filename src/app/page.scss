@@ -8,6 +8,7 @@
   flex-direction: column;
   font-family: "Press Start 2P", cursive;
   background-color: $bg;
+  overflow-y: hidden;
 }
 
 #level-title {
@@ -36,11 +37,8 @@ h3 {
 }
 
 .btn {
-  // margin: 25px;
-  height: 200px;
-  // width: clamp(100px, 100%, 200px);
-  // height: clamp(100px, 100%, 200px);
-  width: 200px;
+  height: 150px;
+  width: 160px;
   border: 10px solid black;
   border-radius: 20%;
   user-select: none;
