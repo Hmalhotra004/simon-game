@@ -1,16 +1,27 @@
+"use client";
 import NavBar from "@/components/NavBar";
 import PlayButton from "@/components/PlayButton";
+import { useEffect, useState } from "react";
 import "./page.scss";
 
 const COLOURS = ["green", "red", "yellow", "blue"];
 
 const Home = () => {
+  const [level, setLevel] = useState("Press Enter to Start");
+  useEffect(() => {
+    document.addEventListener("keydown", (e: KeyboardEvent) => {
+      if (e.keyCode === 13) {
+        setLevel("Level 1");
+      }
+    });
+  }, []);
+
   return (
     <section className="bg">
       <section className="container">
         <NavBar />
         <div className="main">
-          <h1 id="level-title">Press Enter to Start</h1>
+          <h1 id="level-title">{level}</h1>
           <h3 id="high">
             High Score:<span id="high_value"> 0</span>
           </h3>
