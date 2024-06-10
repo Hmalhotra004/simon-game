@@ -80,7 +80,7 @@ const Home = () => {
     setLevel(pv => {
       return {
         value: 0,
-        title: `Level ${level.value}`,
+        title: `Level ${0}`,
         bg: "bg",
       };
     });
