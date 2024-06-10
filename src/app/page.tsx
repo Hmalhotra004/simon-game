@@ -43,7 +43,6 @@ const Home = () => {
           bg: "game-over",
         };
       });
-      StartOver();
     }
   };
 
