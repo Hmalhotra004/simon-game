@@ -60,6 +60,7 @@ const Home = () => {
     setGamePattern(pv => [...pv, randomChosenColour]);
     console.log(gamePattern);
     playSound(randomChosenColour);
+    animate(randomChosenColour);
   };
 
   const handleBtnClick = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -74,7 +75,9 @@ const Home = () => {
     audio.play();
   };
 
-  const animate = (btn: string) => {};
+  const animate = (btn: string) => {
+    // setScale(0.6);
+  };
 
   const StartOver = () => {
     setLevel(pv => {
