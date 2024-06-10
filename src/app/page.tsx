@@ -10,6 +10,7 @@ const Home = () => {
   //states
   const [isStart, setIsStart] = useState(false);
   const [level, setLevel] = useState(1);
+  const [gamePattern, setGamePattern] = useState<string[]>([]);
 
   //effects
   useEffect(() => {
@@ -17,16 +18,31 @@ const Home = () => {
       if (e.keyCode === 13) {
         if (!isStart) {
           setIsStart(true);
-        } else {
           setLevel(1);
+          nextSequence();
+          console.log("start");
+        }
+
+        if (isStart) {
+          setLevel(1);
+          console.log("restart");
         }
       }
     });
-  }, [isStart]);
+  });
 
   //functions
+
+  const nextSequence = () => {
+    const randomNumber = Math.floor(Math.random() * 4);
+    const randomChosenColour = COLOURS[randomNumber];
+    setGamePattern(pv => [...pv, randomChosenColour]);
+    console.log(gamePattern);
+  };
+
   const handleBtnClick = () => {
     setLevel(pv => pv + 1);
+    console.log(level);
   };
 
   return (
