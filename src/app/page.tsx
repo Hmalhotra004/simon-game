@@ -1,7 +1,7 @@
 "use client";
 import NavBar from "@/components/NavBar";
 import PlayButton from "@/components/PlayButton";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./page.scss";
 
 const COLOURS = ["green", "red", "yellow", "blue"];
@@ -9,28 +9,22 @@ const COLOURS = ["green", "red", "yellow", "blue"];
 const Home = () => {
   //states
   const [isStart, setIsStart] = useState(false);
-  const [level, setLevel] = useState({ value: 0, title: "Press Enter to Start", bg: "bg" });
+  const [level, setLevel] = useState({ value: 0, title: "Click Here to Start", bg: "bg" });
   const [gamePattern, setGamePattern] = useState<string[]>([]);
   const [userPattern, setUserPattern] = useState<string[]>([]);
 
-  //effects
-  useEffect(() => {
-    document.addEventListener("keypress", (e: KeyboardEvent) => {
-      if (e.keyCode === 13) {
-        if (!isStart) {
-          // StartOver();
-          nextSequence();
-          setIsStart(true);
-          console.log("start");
-        } else {
-          StartOver();
-          nextSequence();
-        }
-      }
-    });
-  });
-
   //functions
+  const handleStart = () => {
+    if (isStart === false) {
+      // StartOver();
+      nextSequence();
+      setIsStart(true);
+      console.log("start");
+    } else {
+      StartOver();
+      nextSequence();
+    }
+  };
 
   const checkAns = (level: number) => {
     if (gamePattern[level] === userPattern[level]) {
@@ -77,7 +71,7 @@ const Home = () => {
     setLevel(pv => {
       return {
         value: 0,
-        title: `Level ${level.value + 1}`,
+        title: `Level ${level.value}`,
         bg: "bg",
       };
     });
@@ -91,7 +85,12 @@ const Home = () => {
       <section className="container">
         <NavBar />
         <div className="main">
-          <h1 id="level-title">{level.title}</h1>
+          <button
+            id="level-title"
+            onClick={handleStart}
+          >
+            {level.title}
+          </button>
           {/* <h3 id="high">
             High Score:<span id="high_value"> 0</span>
           </h3> */}
@@ -111,4 +110,3 @@ const Home = () => {
 };
 
 export default Home;
- 
