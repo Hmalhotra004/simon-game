@@ -11,8 +11,8 @@ const Home = () => {
         <NavBar />
         <div className="main">
           <h1 id="level-title">Press Enter to Start</h1>
-          <h3>
-            High Score:<span id="high_s">0</span>
+          <h3 id="high">
+            High Score:<span id="high_value"> 0</span>
           </h3>
           <div className="btn-wrapper">
             {COLOURS.map((col, idx) => (

@@ -25,7 +25,7 @@
   text-align: center;
 }
 
-h3 {
+#high {
   font-size: clamp($size-base, 2vw, $size-3xl);
   margin-bottom: $size-xl;
   color: $title;
@@ -83,7 +83,7 @@ h3 {
 @media (min-width: 320px) {
   .btn {
     height: 150px;
-    width: 160px;
+    width: 150px;
   }
 }
 
