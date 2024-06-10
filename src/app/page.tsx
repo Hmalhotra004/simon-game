@@ -13,6 +13,8 @@ const Home = () => {
   const [gamePattern, setGamePattern] = useState<string[]>([]);
   const [userPattern, setUserPattern] = useState<string[]>([]);
 
+  let bg = "bg";
+
   //effects
   useEffect(() => {
     document.addEventListener("keypress", (e: KeyboardEvent) => {
@@ -39,6 +41,9 @@ const Home = () => {
           nextSequence();
         }, 1000);
       }
+    } else {
+      playSound("wrong");
+      bg = "game-over";
     }
   };
 
@@ -72,7 +77,7 @@ const Home = () => {
   };
 
   return (
-    <section className="bg">
+    <section className={bg}>
       <section className="container">
         <NavBar />
         <div className="main">
