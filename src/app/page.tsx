@@ -9,30 +9,24 @@ const COLOURS = ["green", "red", "yellow", "blue"];
 const Home = () => {
   //states
   const [isStart, setIsStart] = useState(false);
-  const [level, setLevel] = useState(1);
+  const [level, setLevel] = useState(0);
   const [gamePattern, setGamePattern] = useState<string[]>([]);
+  const [userPattern, setUserPattern] = useState<string[]>([]);
 
   //effects
   useEffect(() => {
     document.addEventListener("keydown", (e: KeyboardEvent) => {
-      if (e.keyCode === 13) {
-        if (!isStart) {
-          setIsStart(true);
-          setLevel(1);
-          nextSequence();
-          console.log("start");
-        }
-
-        if (isStart) {
-          setLevel(1);
-          console.log("restart");
-        }
+      console.log(e.keyCode);
+      if (e.keyCode === 32) {
+        setIsStart(true);
+        setLevel(pv => pv + 1);
+        nextSequence();
+        console.log("start");
       }
     });
   });
 
   //functions
-
   const nextSequence = () => {
     const randomNumber = Math.floor(Math.random() * 4);
     const randomChosenColour = COLOURS[randomNumber];
