@@ -8,10 +8,17 @@ const COLOURS = ["green", "red", "yellow", "blue"];
 
 const Home = () => {
   //states
-  const [isStart, setIsStart] = useState(false);
+  const [isStart, setIsStart] = useState({ start: false, title: "Press Enter to Start", bg: "bg" });
   const [level, setLevel] = useState(0);
   const [gamePattern, setGamePattern] = useState<string[]>([]);
   const [userPattern, setUserPattern] = useState<string[]>([]);
+
+  let title;
+  if (!isStart) {
+    title = "Press Enter to Start";
+  } else {
+    title = `Level: ${level}`;
+  }
 
   let bg = "bg";
 
@@ -22,7 +29,9 @@ const Home = () => {
         if (!isStart) {
           StartOver();
           nextSequence();
-          setIsStart(true);
+          setIsStart(pv => {
+            return { start: true, title: `Level: ${level}`, bg: "bg" };
+          });
           console.log("start");
         } else {
           StartOver();
@@ -34,8 +43,8 @@ const Home = () => {
 
   //functions
 
-  const checkAns = (currentLevel: number) => {
-    if (gamePattern[currentLevel] === userPattern[currentLevel]) {
+  const checkAns = (level: number) => {
+    if (gamePattern[level] === userPattern[level]) {
       if (userPattern.length === gamePattern.length) {
         setTimeout(() => {
           nextSequence();
@@ -43,8 +52,9 @@ const Home = () => {
       }
     } else {
       playSound("wrong");
-      bg = "game-over";
-      title = "Game Over, Press Enter to Restart";
+      setIsStart(pv => {
+        return { start: false, title: `Game Over, Press Enter to Restart`, bg: "game-over" };
+      });
     }
   };
 
@@ -77,19 +87,12 @@ const Home = () => {
     console.log("start over");
   };
 
-  let title;
-  if (!isStart) {
-    title = "Press Enter to Start";
-  } else {
-    title = `Level: ${level}`;
-  }
-
   return (
-    <section className={bg}>
+    <section className={isStart.bg}>
       <section className="container">
         <NavBar />
         <div className="main">
-          <h1 id="level-title">{title}</h1>
+          <h1 id="level-title">{isStart.title}</h1>
           {/* <h3 id="high">
             High Score:<span id="high_value"> 0</span>
           </h3> */}
