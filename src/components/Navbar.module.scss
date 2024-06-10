@@ -1,0 +1,19 @@
+@import "../app//utils.scss";
+
+.head {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 1.5rem;
+  color: white;
+}
+
+.lb {
+  margin-right: auto;
+}
+
+#btn {
+  padding: 0.5rem;
+  color: $blue;
+  font-size: clamp($size-base, 2vw, $size-2xl);
+}
