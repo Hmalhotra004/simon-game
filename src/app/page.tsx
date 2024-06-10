@@ -16,7 +16,7 @@ const Home = () => {
   //functions
   const handleStart = () => {
     if (isStart === false) {
-      // StartOver();
+      StartOver();
       nextSequence();
       setIsStart(true);
       console.log("start");
@@ -26,8 +26,8 @@ const Home = () => {
     }
   };
 
-  const checkAns = (level: number) => {
-    if (gamePattern[level] === userPattern[level]) {
+  const checkAns = (currlevel: number) => {
+    if (gamePattern[currlevel] === userPattern[currlevel]) {
       if (userPattern.length === gamePattern.length) {
         setTimeout(() => {
           nextSequence();
@@ -36,6 +36,14 @@ const Home = () => {
     } else {
       playSound("wrong");
       setIsStart(false);
+      setLevel(pv => {
+        return {
+          value: 0,
+          title: "Game Over, Click Here to Restart",
+          bg: "game-over",
+        };
+      });
+      StartOver();
     }
   };
 
@@ -58,7 +66,6 @@ const Home = () => {
     const btnId = e.currentTarget.id;
     setUserPattern(pv => [...pv, btnId]);
     playSound(btnId);
-    console.log(level);
     checkAns(userPattern.length - 1);
   };
 
