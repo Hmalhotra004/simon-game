@@ -14,12 +14,11 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  font-family: "Press Start 2P", cursive;
-  font-weight: 400;
-  overflow-y: hidden;
 }
 
 #level-title {
+  font-family: "Press Start 2P", cursive;
+  font-weight: 400;
   font-size: clamp($size-2xl, 3vw, $size-6xl);
   margin: $size-4xl;
   color: $title;
@@ -27,6 +26,8 @@
 }
 
 #high {
+  font-family: "Press Start 2P", cursive;
+  font-weight: 400;
   font-size: clamp($size-lg, 2vw, $size-3xl);
   margin-bottom: $size-xl;
   color: $title;

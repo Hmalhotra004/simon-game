@@ -18,7 +18,7 @@ const Home = () => {
     document.addEventListener("keypress", (e: KeyboardEvent) => {
       if (e.keyCode === 13) {
         if (!isStart) {
-          StartOver();
+          // StartOver();
           nextSequence();
           setIsStart(true);
           console.log("start");
@@ -111,3 +111,4 @@ const Home = () => {
 };
 
 export default Home;
+ 
