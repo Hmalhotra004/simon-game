@@ -37,8 +37,6 @@ h3 {
 }
 
 .btn {
-  height: 150px;
-  width: 160px;
   border: 10px solid black;
   border-radius: 20%;
   user-select: none;
@@ -73,3 +71,37 @@ h3 {
   box-shadow: 0 0 20px white;
   background-color: grey;
 }
+
+// 3xs
+@media (min-width: 320px) {
+  .btn {
+    height: 150px;
+    width: 160px;
+  }
+}
+
+// 2xs
+// @media (min-width: 375px) {}
+
+// xs
+// @media (min-width: 475px) {}
+
+// sm
+// @media (min-width: 640px) {}
+
+// md
+@media (min-width: 768px) {
+  .btn {
+    height: 200px;
+    width: 200px;
+  }
+}
+
+/* lg */
+// @media (min-width: 1024px) {}
+
+// xl
+// @media (min-width: 1280px) {}
+
+// 2xl
+// @media (min-width: 1536px) {}
