@@ -12,6 +12,7 @@ const Home = () => {
   const [level, setLevel] = useState({ value: 0, title: "Click Here to Start", bg: "bg" });
   const [gamePattern, setGamePattern] = useState<string[]>([]);
   const [userPattern, setUserPattern] = useState<string[]>([]);
+  const [scale, setScale] = useState(1);
 
   //functions
   const handleStart = () => {
@@ -68,10 +69,12 @@ const Home = () => {
     checkAns(userPattern.length - 1);
   };
 
-  function playSound(name: string) {
+  const playSound = (name: string) => {
     var audio = new Audio(`/sounds/${name}.mp3`);
     audio.play();
-  }
+  };
+
+  const animate = (btn: string) => {};
 
   const StartOver = () => {
     setLevel(pv => {
@@ -106,6 +109,7 @@ const Home = () => {
                 key={idx}
                 btn={col}
                 onClick={(e: React.MouseEvent<HTMLButtonElement>) => handleBtnClick(e)}
+                scale={scale}
               />
             ))}
           </div>
