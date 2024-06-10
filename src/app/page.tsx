@@ -15,18 +15,35 @@ const Home = () => {
 
   //effects
   useEffect(() => {
-    document.addEventListener("keydown", (e: KeyboardEvent) => {
+    document.addEventListener("keypress", (e: KeyboardEvent) => {
       if (e.keyCode === 13) {
-        setIsStart(true);
-        setLevel(pv => pv + 1);
-        nextSequence();
-        console.log("start");
+        if (!isStart) {
+          StartOver();
+          nextSequence();
+          setIsStart(true);
+          console.log("start");
+        } else {
+          StartOver();
+          nextSequence();
+        }
       }
     });
   });
 
   //functions
+
+  const checkAns = (currentLevel: number) => {
+    if (gamePattern[currentLevel] === userPattern[currentLevel]) {
+      if (userPattern.length === gamePattern.length) {
+        setTimeout(() => {
+          nextSequence();
+        }, 1000);
+      }
+    }
+  };
+
   const nextSequence = () => {
+    setLevel(pv => pv + 1);
     const randomNumber = Math.floor(Math.random() * 4);
     const randomChosenColour = COLOURS[randomNumber];
     setGamePattern(pv => [...pv, randomChosenColour]);
@@ -34,14 +51,25 @@ const Home = () => {
     playSound(randomChosenColour);
   };
 
-  const handleBtnClick = () => {
+  const handleBtnClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const btnId = e.currentTarget.id;
+    setUserPattern(pv => [...pv, btnId]);
+    playSound(btnId);
     console.log(level);
+    checkAns(userPattern.length - 1);
   };
 
   function playSound(name: string) {
     var audio = new Audio(`/sounds/${name}.mp3`);
     audio.play();
   }
+
+  const StartOver = () => {
+    setLevel(0);
+    setGamePattern([]);
+    setUserPattern([]);
+    console.log("start over");
+  };
 
   return (
     <section className="bg">
@@ -57,7 +85,7 @@ const Home = () => {
               <PlayButton
                 key={idx}
                 btn={col}
-                onClick={handleBtnClick}
+                onClick={(e: React.MouseEvent<HTMLButtonElement>) => handleBtnClick(e)}
               />
             ))}
           </div>

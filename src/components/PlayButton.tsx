@@ -2,7 +2,7 @@ import "@/app/page.scss";
 
 type Props = {
   btn: string;
-  onClick: () => void;
+  onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
 const PlayButton = ({ btn, onClick }: Props) => {
