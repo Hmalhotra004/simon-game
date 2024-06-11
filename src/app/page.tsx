@@ -30,6 +30,7 @@ const Home = () => {
     if (gamePattern[idx] === userPattern[idx]) {
       console.log(gamePattern.length === userPattern.length);
       console.log(gamePattern.length);
+      console.log(userPattern.length);
       if (userPattern.length === gamePattern.length) {
         setTimeout(() => {
           nextSequence();
