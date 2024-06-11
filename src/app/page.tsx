@@ -1,8 +1,9 @@
 "use client";
 import HighScore from "@/components/HighScore";
+import HowToPlay from "@/components/HowToPlay";
 import PlayButton from "@/components/PlayButton";
 import Reveal from "@/components/Reveal";
-import { useState } from "react";
+import { useState,useRef } from "react";
 import "./page.scss";
 
 const COLOURS = ["green", "red", "yellow", "blue"];
@@ -15,6 +16,8 @@ const Home = () => {
   const [userPattern, setUserPattern] = useState<string[]>([]);
   const [animatingButton, setAnimatingButton] = useState("");
   const [isHow, setIsHow] = useState(true);
+
+  const dialog = useRef();
 
   //functions
   const handleStart = () => {
@@ -104,7 +107,6 @@ const Home = () => {
         <section className="container">
           {/* <NavBar /> */}
           <div className="main">
-            {/* {isHow && <HowToPlay />} */}
             <Reveal x={-800}>
               <button
                 id="level-title"
@@ -125,6 +127,7 @@ const Home = () => {
                 />
               ))}
             </div>
+            {isHow && <HowToPlay ref={dialog} />}
           </div>
         </section>
       </section>
