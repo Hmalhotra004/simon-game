@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { SetStateAction, forwardRef, useRef } from "react";
+import { SetStateAction } from "react";
 import styles from "./howtoplay.module.scss";
 import Reveal from "./Reveal";
 
@@ -9,20 +9,14 @@ type Props = {
   setIsHow: React.Dispatch<SetStateAction<boolean>>;
 };
 
-const HowToPlay = forwardRef(function HowToPlay({ setIsHow }: Props) {
-  const dialog = useRef();
-
+const HowToPlay = ({ setIsHow }: Props) => {
   const handleClose = () => {
     setIsHow(false);
-    // dialog.current.close();
   };
 
   return (
     <>
-      <dialog
-        id={styles.window}
-        // ref={dialog}
-      >
+      <dialog id={styles.window}>
         <header id={styles.intro}>
           <Reveal x={-500}>
             <h1>The Simon Game</h1>
@@ -76,9 +70,8 @@ const HowToPlay = forwardRef(function HowToPlay({ setIsHow }: Props) {
           </form>
         </footer>
       </dialog>
-      {/* , document.getElementById("modal") */}
     </>
   );
-});
+};
 
 export default HowToPlay;
