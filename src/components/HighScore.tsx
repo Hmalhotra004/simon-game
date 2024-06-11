@@ -1,5 +1,6 @@
 import "@/app/page.scss";
 import { useEffect, useState } from "react";
+import Reveal from "./Reveal";
 
 type Props = {
   score: number;
@@ -21,9 +22,11 @@ const HighScore = ({ score }: Props) => {
   }, [score, highScore]);
 
   return (
-    <h3 id="high">
-      High Score:<span id="high_value">{highScore}</span>
-    </h3>
+    <Reveal x={-800}>
+      <h3 id="high">
+        High Score:<span id="high_value">{highScore}</span>
+      </h3>
+    </Reveal>
   );
 };
 

@@ -1,6 +1,7 @@
 "use client";
 import HighScore from "@/components/HighScore";
 import PlayButton from "@/components/PlayButton";
+import Reveal from "@/components/Reveal";
 import { useState } from "react";
 import "./page.scss";
 
@@ -104,12 +105,14 @@ const Home = () => {
           {/* <NavBar /> */}
           <div className="main">
             {/* {isHow && <HowToPlay />} */}
-            <button
-              id="level-title"
-              onClick={handleStart}
-            >
-              {level.title}
-            </button>
+            <Reveal x={-800}>
+              <button
+                id="level-title"
+                onClick={handleStart}
+              >
+                {level.title}
+              </button>
+            </Reveal>
             <HighScore score={level.value} />
             <div className="btn-wrapper">
               {COLOURS.map((col, idx) => (
