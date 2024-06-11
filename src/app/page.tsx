@@ -27,6 +27,7 @@ const Home = () => {
 
   const checkAns = (idx: number) => {
     console.log(gamePattern[idx] === userPattern[idx]);
+    console.log(userPattern.length);
     if (gamePattern[idx] === userPattern[idx]) {
       console.log(gamePattern.length === userPattern.length);
       console.log(gamePattern.length);
