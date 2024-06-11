@@ -4,7 +4,7 @@ import HowToPlay from "@/components/HowToPlay";
 import NavBar from "@/components/NavBar";
 import PlayButton from "@/components/PlayButton";
 import Reveal from "@/components/Reveal";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import "./page.scss";
 
 const COLOURS = ["green", "red", "yellow", "blue"];
@@ -17,8 +17,6 @@ const Home = () => {
   const [userPattern, setUserPattern] = useState<string[]>([]);
   const [animatingButton, setAnimatingButton] = useState("");
   const [isHow, setIsHow] = useState(true);
-
-  const dialog = useRef();
 
   //functions
   const handleStart = () => {
