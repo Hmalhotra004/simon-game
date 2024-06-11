@@ -25,8 +25,9 @@ const Home = () => {
     }
   };
 
-  const checkAns = (currlevel: number) => {
-    if (gamePattern[currlevel] === userPattern[currlevel]) {
+  const checkAns = (idx: number) => {
+    console.log(gamePattern[idx] === userPattern[idx] );
+    if (gamePattern[idx] === userPattern[idx]) {
       if (userPattern.length === gamePattern.length) {
         setTimeout(() => {
           nextSequence();
@@ -46,7 +47,6 @@ const Home = () => {
   };
 
   const nextSequence = () => {
-    console.log("nextSequence");
     setUserPattern([]);
     setLevel(pv => {
       return {
@@ -57,11 +57,12 @@ const Home = () => {
     });
     const randomNumber = Math.floor(Math.random() * 4);
     const randomChosenColour = COLOURS[randomNumber];
-    console.log(gamePattern);
-    setGamePattern(pv => [...pv, randomChosenColour]);
-    console.log(randomChosenColour);
-    playSound(randomChosenColour);
-    animate(randomChosenColour);
+    setGamePattern(pv => {
+      const newPattern = [...pv, randomChosenColour];
+      playSound(randomChosenColour);
+      animate(randomChosenColour);
+      return newPattern;
+    });
   };
 
   const handleBtnClick = (e: React.MouseEvent<HTMLButtonElement>) => {
