@@ -51,7 +51,7 @@ const Home = () => {
     setLevel(pv => {
       return {
         value: pv.value + 1,
-        title: `Level ${level.value + 1}`,
+        title: `Level ${pv.value + 1}`,
         bg: "bg",
       };
     });
