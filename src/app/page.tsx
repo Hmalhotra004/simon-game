@@ -26,8 +26,10 @@ const Home = () => {
   };
 
   const checkAns = (idx: number) => {
-    console.log(gamePattern[idx] === userPattern[idx] );
+    console.log(gamePattern[idx] === userPattern[idx]);
     if (gamePattern[idx] === userPattern[idx]) {
+      console.log(gamePattern.length === userPattern.length);
+      console.log(gamePattern.length);
       if (userPattern.length === gamePattern.length) {
         setTimeout(() => {
           nextSequence();
@@ -46,6 +48,15 @@ const Home = () => {
     }
   };
 
+  const handleBtnClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (!isStart) return;
+
+    const btnId = e.currentTarget.id;
+    setUserPattern(pv => [...pv, btnId]);
+    playSound(btnId);
+    checkAns(userPattern.length - 1);
+  };
+
   const nextSequence = () => {
     setUserPattern([]);
     setLevel(pv => {
@@ -57,47 +68,25 @@ const Home = () => {
     });
     const randomNumber = Math.floor(Math.random() * 4);
     const randomChosenColour = COLOURS[randomNumber];
-    setGamePattern(pv => {
-      const newPattern = [...pv, randomChosenColour];
-      playSound(randomChosenColour);
-      animate(randomChosenColour);
-      return newPattern;
-    });
+    setGamePattern(pv => [...pv, randomChosenColour]);
+    playSound(randomChosenColour);
+    animate(randomChosenColour);
   };
 
-  const handleBtnClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    if (!isStart) return;
-
-    const btnId = e.currentTarget.id;
-    // setUserPattern(pv => [...userPattern, btnId]);
-    setUserPattern(prevPattern => {
-      const newPattern = [...prevPattern, btnId];
-      playSound(btnId);
-      checkAns(newPattern.length - 1);
-      return newPattern;
+  const StartOver = () => {
+    setIsStart(false);
+    setLevel({
+      value: 0,
+      title: "Click Here to Start",
+      bg: "bg",
     });
-    // console.log(userPattern.length);
-    // playSound(btnId);
-    // checkAns(userPattern.length - 1);
+    setGamePattern([]);
+    setUserPattern([]);
   };
 
   const animate = (btn: string) => {
     setAnimatingButton(btn);
     setTimeout(() => setAnimatingButton(""), 200);
-  };
-
-  const StartOver = () => {
-    setIsStart(false);
-    setLevel(_ => {
-      return {
-        value: 0,
-        title: "Click Here to Start",
-        bg: "bg",
-      };
-    });
-    setGamePattern([]);
-    setUserPattern([]);
-    console.log("start over");
   };
 
   const playSound = (name: string) => {
