@@ -12,6 +12,7 @@ const Home = () => {
   const [gamePattern, setGamePattern] = useState<string[]>([]);
   const [userPattern, setUserPattern] = useState<string[]>([]);
   const [animatingButton, setAnimatingButton] = useState("");
+  const [isHow, setIsHow] = useState(true);
 
   //functions
   const handleStart = () => {
@@ -96,33 +97,36 @@ const Home = () => {
   };
 
   return (
-    <section className={level.bg}>
-      <section className="container">
-        {/* <NavBar /> */}
-        <div className="main">
-          <button
-            id="level-title"
-            onClick={handleStart}
-          >
-            {level.title}
-          </button>
-          {/* <h3 id="high">
+    <>
+      <section className={level.bg}>
+        <section className="container">
+          {/* {isHow && <HowToPlay />} */}
+          {/* <NavBar /> */}
+          <div className="main">
+            <button
+              id="level-title"
+              onClick={handleStart}
+            >
+              {level.title}
+            </button>
+            {/* <h3 id="high">
             High Score:<span id="high_value"> 0</span>
           </h3> */}
-          <div className="btn-wrapper">
-            {COLOURS.map((col, idx) => (
-              <PlayButton
-                key={idx}
-                btn={col}
-                onClick={(e: React.MouseEvent) => handleBtnClick(e)}
-                disabled={!isStart}
-                isAnimating={animatingButton === col}
-              />
-            ))}
+            <div className="btn-wrapper">
+              {COLOURS.map((col, idx) => (
+                <PlayButton
+                  key={idx}
+                  btn={col}
+                  onClick={(e: React.MouseEvent) => handleBtnClick(e)}
+                  disabled={!isStart}
+                  isAnimating={animatingButton === col}
+                />
+              ))}
+            </div>
           </div>
-        </div>
+        </section>
       </section>
-    </section>
+    </>
   );
 };
 
