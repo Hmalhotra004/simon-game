@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { SetStateAction, forwardRef, useRef } from "react";
 import styles from "./howtoplay.module.scss";
 import Reveal from "./Reveal";
@@ -45,12 +46,13 @@ const HowToPlay = forwardRef(function HowToPlay({ setIsHow }: Props) {
         <footer id={styles.foot}>
           <form method="dialog">
             <div>
-              <Reveal x={-500}>
-                <button>Register</button>
-              </Reveal>
-              <Reveal x={-500}>
-                <button>Login</button>
-              </Reveal>
+              <motion.button
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+              >
+                Register
+              </motion.button>
+              <button>Login</button>
             </div>
             <div>
               <Reveal x={-500}>
