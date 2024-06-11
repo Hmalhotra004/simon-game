@@ -14,7 +14,7 @@ const Home = () => {
   const [gamePattern, setGamePattern] = useState<string[]>([]);
   const [userPattern, setUserPattern] = useState<string[]>([]);
   const [animatingButton, setAnimatingButton] = useState("");
-  // const [isHow, setIsHow] = useState(true);
+  const [isHow, setIsHow] = useState(true);
 
   //functions
   const handleStart = () => {
