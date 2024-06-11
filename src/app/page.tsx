@@ -1,4 +1,5 @@
 "use client";
+import HighScore from "@/components/HighScore";
 import PlayButton from "@/components/PlayButton";
 import { useState } from "react";
 import "./page.scss";
@@ -12,7 +13,7 @@ const Home = () => {
   const [gamePattern, setGamePattern] = useState<string[]>([]);
   const [userPattern, setUserPattern] = useState<string[]>([]);
   const [animatingButton, setAnimatingButton] = useState("");
-  const [isHow, setIsHow] = useState(true);
+  // const [isHow, setIsHow] = useState(true);
 
   //functions
   const handleStart = () => {
@@ -100,18 +101,16 @@ const Home = () => {
     <>
       <section className={level.bg}>
         <section className="container">
-          {/* {isHow && <HowToPlay />} */}
           {/* <NavBar /> */}
           <div className="main">
+            {/* {isHow && <HowToPlay />} */}
             <button
               id="level-title"
               onClick={handleStart}
             >
               {level.title}
             </button>
-            {/* <h3 id="high">
-            High Score:<span id="high_value"> 0</span>
-          </h3> */}
+            <HighScore score={level.value} />
             <div className="btn-wrapper">
               {COLOURS.map((col, idx) => (
                 <PlayButton

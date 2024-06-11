@@ -1,7 +1,9 @@
+import styles from "./howtoplay.module.scss";
+
 const HowToPlay = () => {
   return (
-    <dialog>
-      <div>
+    <dialog id={styles.window}>
+      <div id={styles.intro}>
         <h1>The Simon Game</h1>
         <p>How to Play</p>
       </div>
