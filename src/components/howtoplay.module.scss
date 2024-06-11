@@ -43,7 +43,6 @@
   div {
     @include flex-c;
     gap: 1rem;
-    overflow: hidden;
   }
 
   button {
@@ -54,7 +53,6 @@
     border-radius: 10px;
     margin: 0.5rem 0rem;
     transition: 0.2s linear;
-    overflow: hidden;
 
     &:hover {
       background-color: $title;

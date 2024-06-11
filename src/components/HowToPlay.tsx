@@ -52,12 +52,21 @@ const HowToPlay = forwardRef(function HowToPlay({ setIsHow }: Props) {
               >
                 Register
               </motion.button>
-              <button>Login</button>
+              <motion.button
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+              >
+                Login
+              </motion.button>
             </div>
             <div>
-              <Reveal x={-500}>
-                <button onClick={handleClose}>Close</button>
-              </Reveal>
+              <motion.button
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                onClick={handleClose}
+              >
+                Close
+              </motion.button>
             </div>
             <Reveal x={-500}>
               <h4>
