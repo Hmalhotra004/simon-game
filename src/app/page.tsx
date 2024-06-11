@@ -50,11 +50,12 @@ const Home = () => {
     }
   };
 
-  const handleBtnClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleBtnClick = (e: React.MouseEvent) => {
     if (!isStart) return;
 
     const btnId = e.currentTarget.id;
-    setUserPattern(pv => [...pv, btnId]);
+    console.log(btnId);
+    setUserPattern([...userPattern, btnId]);
     playSound(btnId);
     checkAns(userPattern.length - 1);
   };
@@ -115,7 +116,7 @@ const Home = () => {
               <PlayButton
                 key={idx}
                 btn={col}
-                onClick={(e: React.MouseEvent<HTMLButtonElement>) => handleBtnClick(e)}
+                onClick={(e: React.MouseEvent) => handleBtnClick(e)}
                 disabled={!isStart}
                 isAnimating={animatingButton === col}
               />

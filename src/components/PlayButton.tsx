@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 type Props = {
   btn: string;
-  onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  onClick: (e: React.MouseEvent) => void;
   disabled: boolean;
   isAnimating: boolean | string;
 };
