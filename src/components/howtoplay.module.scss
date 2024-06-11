@@ -13,6 +13,11 @@
   max-width: 900px;
   max-height: 1000px;
   margin: 0 auto;
+
+  ::selection {
+    color: $title;
+    background-color: $bg;
+  }
 }
 
 #intro {

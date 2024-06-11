@@ -10,6 +10,11 @@
 
 .main {
   @include flex-cc;
+
+  ::selection {
+    color: $bg;
+    background-color: $title;
+  }
 }
 
 #level-title {
