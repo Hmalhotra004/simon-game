@@ -23,7 +23,7 @@ const Home = () => {
       console.log("start");
     } else {
       StartOver();
-      nextSequence();
+      // nextSequence();
     }
   };
 
@@ -37,7 +37,7 @@ const Home = () => {
     } else {
       playSound("wrong");
       setIsStart(false);
-      setLevel(pv => {
+      setLevel(_ => {
         return {
           value: 0,
           title: "Game Over, Click Here to Restart",
@@ -48,6 +48,8 @@ const Home = () => {
   };
 
   const nextSequence = () => {
+    console.log("nextSequence");
+    setUserPattern([]);
     setLevel(pv => {
       return {
         value: pv.value + 1,
@@ -57,40 +59,45 @@ const Home = () => {
     });
     const randomNumber = Math.floor(Math.random() * 4);
     const randomChosenColour = COLOURS[randomNumber];
-    setGamePattern(pv => [...pv, randomChosenColour]);
     console.log(gamePattern);
+    setGamePattern(pv => [...pv, randomChosenColour]);
+    console.log(randomChosenColour);
     playSound(randomChosenColour);
     animate(randomChosenColour);
+    console.log(userPattern);
   };
 
   const handleBtnClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    console.log(e.currentTarget.id);
     const btnId = e.currentTarget.id;
-    setUserPattern(pv => [...pv, btnId]);
+    console.log(userPattern);
+    setUserPattern(pv => [...userPattern, btnId]);
+    console.log(userPattern.length);
     playSound(btnId);
     checkAns(userPattern.length - 1);
   };
 
-  const playSound = (name: string) => {
-    var audio = new Audio(`/sounds/${name}.mp3`);
-    audio.play();
-  };
-
   const animate = (btn: string) => {
-    
     // setScale(0.6);
   };
 
   const StartOver = () => {
+    setIsStart(false);
     setLevel(pv => {
       return {
         value: 0,
-        title: `Level ${0}`,
+        title: `Click Here to Start`,
         bg: "bg",
       };
     });
     setGamePattern([]);
     setUserPattern([]);
     console.log("start over");
+  };
+
+  const playSound = (name: string) => {
+    var audio = new Audio(`/sounds/${name}.mp3`);
+    audio.play();
   };
 
   return (
