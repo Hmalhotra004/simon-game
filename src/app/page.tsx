@@ -1,9 +1,10 @@
 "use client";
 import HighScore from "@/components/HighScore";
 import HowToPlay from "@/components/HowToPlay";
+import NavBar from "@/components/NavBar";
 import PlayButton from "@/components/PlayButton";
 import Reveal from "@/components/Reveal";
-import { useState,useRef } from "react";
+import { useRef, useState } from "react";
 import "./page.scss";
 
 const COLOURS = ["green", "red", "yellow", "blue"];
@@ -105,7 +106,7 @@ const Home = () => {
     <>
       <section className={level.bg}>
         <section className="container">
-          {/* <NavBar /> */}
+          {!isHow && <NavBar />}
           <div className="main">
             <Reveal x={-800}>
               <button
@@ -127,7 +128,7 @@ const Home = () => {
                 />
               ))}
             </div>
-            {isHow && <HowToPlay ref={dialog} />}
+            {isHow && <HowToPlay setIsHow={setIsHow} />}
           </div>
         </section>
       </section>

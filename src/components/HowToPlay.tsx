@@ -7,8 +7,13 @@ type Props = {
   setIsHow: React.Dispatch<SetStateAction<boolean>>;
 };
 
-const HowToPlay = forwardRef(function HowToPlay() {
+const HowToPlay = forwardRef(function HowToPlay({ setIsHow }: Props) {
   const dialog = useRef();
+
+  const handleClose = () => {
+    setIsHow(false);
+    // dialog.current.close();
+  };
 
   return (
     <>
@@ -29,7 +34,18 @@ const HowToPlay = forwardRef(function HowToPlay() {
         </main>
         <footer id={styles.foot}>
           <form method="dialog">
-            <button>Close</button>
+            <div>
+              <button>Register</button>
+              <button>Login</button>
+            </div>
+            <div>
+              <button onClick={handleClose}>Close</button>
+            </div>
+            <div>
+              <h4>
+                Tip: <span>Register to save Highscore </span>
+              </h4>
+            </div>
           </form>
         </footer>
       </dialog>
