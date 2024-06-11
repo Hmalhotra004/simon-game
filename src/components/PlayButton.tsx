@@ -4,10 +4,11 @@ import { motion } from "framer-motion";
 type Props = {
   btn: string;
   onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  scale: number
+  scale: number;
+  disabled: boolean;
 };
 
-const PlayButton = ({ btn, onClick, scale }: Props) => {
+const PlayButton = ({ btn, onClick, scale, disabled }: Props) => {
   return (
     <motion.button
       whileTap={{ scale: 0.6 }}
@@ -16,6 +17,7 @@ const PlayButton = ({ btn, onClick, scale }: Props) => {
       id={btn}
       className={`btn ${btn}`}
       onClick={onClick}
+      disabled={disabled}
     />
   );
 };

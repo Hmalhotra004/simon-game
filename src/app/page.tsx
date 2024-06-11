@@ -23,7 +23,6 @@ const Home = () => {
       console.log("start");
     } else {
       StartOver();
-      // nextSequence();
     }
   };
 
@@ -64,17 +63,22 @@ const Home = () => {
     console.log(randomChosenColour);
     playSound(randomChosenColour);
     animate(randomChosenColour);
-    console.log(userPattern);
   };
 
   const handleBtnClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    console.log(e.currentTarget.id);
+    if (!isStart) return;
+
     const btnId = e.currentTarget.id;
-    console.log(userPattern);
-    setUserPattern(pv => [...userPattern, btnId]);
-    console.log(userPattern.length);
-    playSound(btnId);
-    checkAns(userPattern.length - 1);
+    // setUserPattern(pv => [...userPattern, btnId]);
+    setUserPattern(prevPattern => {
+      const newPattern = [...prevPattern, btnId];
+      playSound(btnId);
+      checkAns(newPattern.length - 1);
+      return newPattern;
+    });
+    // console.log(userPattern.length);
+    // playSound(btnId);
+    // checkAns(userPattern.length - 1);
   };
 
   const animate = (btn: string) => {
@@ -83,10 +87,10 @@ const Home = () => {
 
   const StartOver = () => {
     setIsStart(false);
-    setLevel(pv => {
+    setLevel(_ => {
       return {
         value: 0,
-        title: `Click Here to Start`,
+        title: "Click Here to Start",
         bg: "bg",
       };
     });
@@ -96,7 +100,7 @@ const Home = () => {
   };
 
   const playSound = (name: string) => {
-    var audio = new Audio(`/sounds/${name}.mp3`);
+    const audio = new Audio(`/sounds/${name}.mp3`);
     audio.play();
   };
 
@@ -121,6 +125,7 @@ const Home = () => {
                 btn={col}
                 onClick={(e: React.MouseEvent<HTMLButtonElement>) => handleBtnClick(e)}
                 scale={scale}
+                disabled={!isStart}
               />
             ))}
           </div>
