@@ -1,5 +1,4 @@
 "use client";
-import NavBar from "@/components/NavBar";
 import PlayButton from "@/components/PlayButton";
 import { useState } from "react";
 import "./page.scss";
@@ -108,7 +107,7 @@ const Home = () => {
   return (
     <section className={level.bg}>
       <section className="container">
-        <NavBar />
+        {/* <NavBar /> */}
         <div className="main">
           <button
             id="level-title"
