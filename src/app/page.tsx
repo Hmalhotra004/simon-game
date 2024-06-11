@@ -4,6 +4,7 @@ import PlayButton from "@/components/PlayButton";
 import Reveal from "@/components/Reveal";
 import { useState } from "react";
 import "./page.scss";
+import NavBar from "@/components/NavBar";
 
 const COLOURS = ["green", "red", "yellow", "blue"];
 
