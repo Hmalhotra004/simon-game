@@ -25,17 +25,17 @@ const Home = () => {
     }
   };
 
-  const checkAns = (idx: number) => {
-    console.log(gamePattern[idx] === userPattern[idx]);
-    console.log(userPattern.length);
-    if (gamePattern[idx] === userPattern[idx]) {
-      console.log(gamePattern.length === userPattern.length);
+  const checkAns = (idx: number, arr: string[]) => {
+    console.log(gamePattern[idx] === arr[idx]);
+    console.log(arr.length);
+    if (gamePattern[idx] === arr[idx]) {
+      console.log(gamePattern.length === arr.length);
       console.log(gamePattern.length);
-      console.log(userPattern.length);
-      if (userPattern.length === gamePattern.length) {
+      if (arr.length === gamePattern.length) {
         setTimeout(() => {
           nextSequence();
         }, 1000);
+        return;
       }
     } else {
       playSound("wrong");
@@ -55,12 +55,14 @@ const Home = () => {
 
     const btnId = e.currentTarget.id;
     console.log(btnId);
-    setUserPattern([...userPattern, btnId]);
+    const newPattern = [...userPattern, btnId];
+    checkAns(newPattern.length - 1, newPattern);
     playSound(btnId);
-    checkAns(userPattern.length - 1);
+    setUserPattern(newPattern);
   };
 
   const nextSequence = () => {
+    console.log("yes");
     setUserPattern([]);
     setLevel(pv => {
       return {
@@ -71,9 +73,12 @@ const Home = () => {
     });
     const randomNumber = Math.floor(Math.random() * 4);
     const randomChosenColour = COLOURS[randomNumber];
-    setGamePattern(pv => [...pv, randomChosenColour]);
-    playSound(randomChosenColour);
-    animate(randomChosenColour);
+    setGamePattern(pv => {
+      const newPattern = [...pv, randomChosenColour];
+      playSound(randomChosenColour);
+      animate(randomChosenColour);
+      return newPattern;
+    });
   };
 
   const StartOver = () => {
