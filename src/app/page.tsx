@@ -108,27 +108,31 @@ const Home = () => {
         <section className="container">
           {!isHow && <NavBar />}
           <div className="main">
-            <Reveal x={-800}>
-              <button
-                id="level-title"
-                onClick={handleStart}
-              >
-                {level.title}
-              </button>
-            </Reveal>
-            <HighScore score={level.value} />
-            <div className="btn-wrapper">
-              {COLOURS.map((col, idx) => (
-                <PlayButton
-                  key={idx}
-                  btn={col}
-                  onClick={(e: React.MouseEvent) => handleBtnClick(e)}
-                  disabled={!isStart}
-                  isAnimating={animatingButton === col}
-                />
-              ))}
-            </div>
             {isHow && <HowToPlay setIsHow={setIsHow} />}
+            {!isHow && (
+              <>
+                <Reveal x={-800}>
+                  <button
+                    id="level-title"
+                    onClick={handleStart}
+                  >
+                    {level.title}
+                  </button>
+                </Reveal>
+                <HighScore score={level.value} />
+                <div className="btn-wrapper">
+                  {COLOURS.map((col, idx) => (
+                    <PlayButton
+                      key={idx}
+                      btn={col}
+                      onClick={(e: React.MouseEvent) => handleBtnClick(e)}
+                      disabled={!isStart}
+                      isAnimating={animatingButton === col}
+                    />
+                  ))}
+                </div>
+              </>
+            )}
           </div>
         </section>
       </section>
