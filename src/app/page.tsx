@@ -12,7 +12,7 @@ const Home = () => {
   const [level, setLevel] = useState({ value: 0, title: "Click Here to Start", bg: "bg" });
   const [gamePattern, setGamePattern] = useState<string[]>([]);
   const [userPattern, setUserPattern] = useState<string[]>([]);
-  const [scale, setScale] = useState(1);
+  const [animatingButton, setAnimatingButton] = useState("");
 
   //functions
   const handleStart = () => {
@@ -82,7 +82,8 @@ const Home = () => {
   };
 
   const animate = (btn: string) => {
-    // setScale(0.6);
+    setAnimatingButton(btn);
+    setTimeout(() => setAnimatingButton(""), 200);
   };
 
   const StartOver = () => {
@@ -124,8 +125,8 @@ const Home = () => {
                 key={idx}
                 btn={col}
                 onClick={(e: React.MouseEvent<HTMLButtonElement>) => handleBtnClick(e)}
-                scale={scale}
                 disabled={!isStart}
+                isAnimating={animatingButton === col}
               />
             ))}
           </div>

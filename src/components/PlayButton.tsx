@@ -4,15 +4,21 @@ import { motion } from "framer-motion";
 type Props = {
   btn: string;
   onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  scale: number;
   disabled: boolean;
+  isAnimating: boolean | string;
 };
 
-const PlayButton = ({ btn, onClick, scale, disabled }: Props) => {
+const PlayButton = ({ btn, onClick, disabled, isAnimating }: Props) => {
+  const animationVariants = {
+    pressed: { scale: 0.6 },
+    normal: { scale: 1 },
+  };
+
   return (
     <motion.button
-      whileTap={{ scale: 0.6 }}
-      animate={{ scale: scale }}
+      variants={animationVariants}
+      whileTap="pressed"
+      animate={isAnimating ? "pressed" : "normal"}
       type="button"
       id={btn}
       className={`btn ${btn}`}
