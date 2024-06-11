@@ -19,18 +19,13 @@ const Home = () => {
       StartOver();
       nextSequence();
       setIsStart(true);
-      console.log("start");
     } else {
       StartOver();
     }
   };
 
   const checkAns = (idx: number, arr: string[]) => {
-    console.log(gamePattern[idx] === arr[idx]);
-    console.log(arr.length);
     if (gamePattern[idx] === arr[idx]) {
-      console.log(gamePattern.length === arr.length);
-      console.log(gamePattern.length);
       if (arr.length === gamePattern.length) {
         setTimeout(() => {
           nextSequence();
@@ -54,7 +49,6 @@ const Home = () => {
     if (!isStart) return;
 
     const btnId = e.currentTarget.id;
-    console.log(btnId);
     const newPattern = [...userPattern, btnId];
     checkAns(newPattern.length - 1, newPattern);
     playSound(btnId);
@@ -62,7 +56,6 @@ const Home = () => {
   };
 
   const nextSequence = () => {
-    console.log("yes");
     setUserPattern([]);
     setLevel(pv => {
       return {
