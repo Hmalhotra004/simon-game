@@ -1,6 +1,6 @@
 "use client";
 import HighScore from "@/components/HighScore";
-import HowToPlay from "@/components/HowToPlay";
+import Modal from "@/components/Modal";
 import NavBar from "@/components/NavBar";
 import PlayButton from "@/components/PlayButton";
 import Reveal from "@/components/Reveal";
@@ -106,7 +106,7 @@ const Home = () => {
         <section className="container">
           {!isHow && <NavBar />}
           <div className="main">
-            {isHow && <HowToPlay setIsHow={setIsHow} />}
+            {isHow && <Modal setIsHow={setIsHow} />}
             {!isHow && (
               <>
                 <Reveal x={-800}>

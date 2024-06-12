@@ -10,7 +10,7 @@ type Props = {
   setIsHow: React.Dispatch<SetStateAction<boolean>>;
 };
 
-const HowToPlay = ({ setIsHow }: Props) => {
+const Modal = ({ setIsHow }: Props) => {
   const [change, setChange] = useState({
     sign: false,
     log: false,
@@ -141,4 +141,4 @@ const BackBtn = () => {
   return <button onClick={handleBack}>Go Back</button>;
 };
 
-export default HowToPlay;
+export default Modal;
