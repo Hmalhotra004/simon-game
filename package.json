@@ -10,10 +10,12 @@
   },
   "dependencies": {
     "firebase": "^10.12.2",
+    "firebaseui": "^6.1.0",
     "framer-motion": "^11.2.10",
     "next": "14.2.3",
     "react": "^18",
     "react-dom": "^18",
+    "react-firebase-hooks": "^5.1.1",
     "sass": "^1.77.4"
   },
   "devDependencies": {
