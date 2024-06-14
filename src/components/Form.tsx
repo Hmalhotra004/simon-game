@@ -1,11 +1,11 @@
-import { AuthContext } from "@/Context/AuthContext";
+import { ModalContext } from "@/Context/ModalContext";
 import { motion } from "framer-motion";
 import { useContext } from "react";
 import styles from "./modal.module.scss";
 import Reveal from "./Reveal";
 
 const Form = () => {
-  const { handleBack, text } = useContext(AuthContext);
+  const { handleBack, text } = useContext(ModalContext);
 
   return (
     <>

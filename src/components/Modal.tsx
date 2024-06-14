@@ -1,5 +1,5 @@
 "use client";
-import { AuthContext } from "@/Context/AuthContext";
+import { ModalContext } from "@/Context/ModalContext";
 import { motion } from "framer-motion";
 import { useContext } from "react";
 import Form from "./Form";
@@ -9,7 +9,7 @@ import Reveal from "./Reveal";
 const LIST = [{ li: `Simon will give the first signal. Repeat the signal by pressing the same color lens.` }, { li: `Simon will add another signal. Repeat these two signals by pressing the same color lenses, in order.` }, { li: `Continue playing as long as you can repeat each of signal correctly.` }];
 
 const Modal = () => {
-  const { sign, log } = useContext(AuthContext);
+  const { sign, log } = useContext(ModalContext);
 
   return (
     <>
@@ -28,7 +28,7 @@ const Modal = () => {
 };
 
 const First = () => {
-  const { handleClose, handleLog, handleSign, text } = useContext(AuthContext);
+  const { handleClose, handleLog, handleSign, text } = useContext(ModalContext);
   return (
     <>
       <header id={styles.intro}>

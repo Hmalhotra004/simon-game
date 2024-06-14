@@ -1,5 +1,6 @@
+import { initializeApp } from "firebase/app";
 import "firebase/auth";
-import firebase from "firebase/compat/app";
+import { getAuth } from "firebase/auth";
 import "firebase/firestore";
 
 const clientCred = {
@@ -11,8 +12,8 @@ const clientCred = {
   appId: process.env.FIREBASE_APP_ID,
 };
 
-if (!firebase.apps.length) {
-  firebase.initializeApp(clientCred);
-}
+const app = initializeApp(clientCred);
 
-export default firebase;
+const auth = getAuth(app);
+
+export default auth;
