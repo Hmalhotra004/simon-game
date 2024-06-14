@@ -1,7 +1,8 @@
 "use client";
 import { motion } from "framer-motion";
 import { SetStateAction, useState } from "react";
-import styles from "./howtoplay.module.scss";
+import Form from "./Form";
+import styles from "./modal.module.scss";
 import Reveal from "./Reveal";
 
 const LIST = [{ li: `Simon will give the first signal. Repeat the signal by pressing the same color lens.` }, { li: `Simon will add another signal. Repeat these two signals by pressing the same color lenses, in order.` }, { li: `Continue playing as long as you can repeat each of signal correctly.` }];
@@ -111,34 +112,6 @@ const First = ({ handleSign, handleLog, handleClose }: First) => {
       </footer>
     </>
   );
-};
-
-const Form = () => {
-  return (
-    <>
-      <form id={styles.form}>
-        <input
-          type="email"
-          placeholder="Email"
-        ></input>
-        <input
-          type="password"
-          placeholder="Password"
-        ></input>
-        <div>
-          <button>Sign Up</button>
-          <BackBtn />
-        </div>
-      </form>
-      <div id={styles.hr} />
-    </>
-  );
-};
-
-const BackBtn = () => {
-  const handleBack = () => {};
-
-  return <button onClick={handleBack}>Go Back</button>;
 };
 
 export default Modal;
