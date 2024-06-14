@@ -1,12 +1,19 @@
+import { AuthContext } from "@/Context/AuthContext";
 import { motion } from "framer-motion";
+import { useContext } from "react";
 import styles from "./modal.module.scss";
 import Reveal from "./Reveal";
 
 const Form = () => {
-  const handleBack = () => {};
+  const { handleBack, text } = useContext(AuthContext);
 
   return (
     <>
+      <header id={styles.intro}>
+        <Reveal x={-300}>
+          <h4>{text}</h4>
+        </Reveal>
+      </header>
       <form id={styles.form}>
         <Reveal>
           <input
@@ -25,7 +32,7 @@ const Form = () => {
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
           >
-            Sign Up
+            {text}
           </motion.button>
           <motion.button
             initial={{ opacity: 0, x: 50 }}

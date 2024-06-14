@@ -1,34 +1,15 @@
 "use client";
+import { AuthContext } from "@/Context/AuthContext";
 import { motion } from "framer-motion";
-import { SetStateAction, useState } from "react";
+import { useContext } from "react";
 import Form from "./Form";
 import styles from "./modal.module.scss";
 import Reveal from "./Reveal";
 
 const LIST = [{ li: `Simon will give the first signal. Repeat the signal by pressing the same color lens.` }, { li: `Simon will add another signal. Repeat these two signals by pressing the same color lenses, in order.` }, { li: `Continue playing as long as you can repeat each of signal correctly.` }];
 
-type Props = {
-  setIsHow: React.Dispatch<SetStateAction<boolean>>;
-};
-
-const Modal = ({ setIsHow }: Props) => {
-  const [change, setChange] = useState({
-    sign: false,
-    log: false,
-    text: "How to Play",
-  });
-
-  const handleSign = () => {
-    setChange({ ...change, sign: !change.sign });
-  };
-
-  const handleLog = () => {
-    setChange({ ...change, log: !change.log });
-  };
-
-  const handleClose = () => {
-    setIsHow(false);
-  };
+const Modal = () => {
+  const { sign, log } = useContext(AuthContext);
 
   return (
     <>
@@ -37,33 +18,24 @@ const Modal = ({ setIsHow }: Props) => {
           <Reveal x={-500}>
             <h1>The Simon Game</h1>
           </Reveal>
-          <Reveal x={-300}>
-            <h4>How to Play</h4>
-          </Reveal>
         </header>
-        {change.sign && <Form />}
-        {change.log && <Form />}
-        {!change.sign && !change.log && (
-          <First
-            handleClose={handleClose}
-            handleLog={handleLog}
-            handleSign={handleSign}
-          />
-        )}
+        {sign && <Form />}
+        {log && <Form />}
+        {!sign && !log && <First />}
       </dialog>
     </>
   );
 };
 
-type First = {
-  handleClose: () => void;
-  handleLog: () => void;
-  handleSign: () => void;
-};
-
-const First = ({ handleSign, handleLog, handleClose }: First) => {
+const First = () => {
+  const { handleClose, handleLog, handleSign, text } = useContext(AuthContext);
   return (
     <>
+      <header id={styles.intro}>
+        <Reveal x={-300}>
+          <h4>{text}</h4>
+        </Reveal>
+      </header>
       <main id={styles.main}>
         <ol>
           {LIST.map((item, idx) => (
@@ -100,7 +72,7 @@ const First = ({ handleSign, handleLog, handleClose }: First) => {
               whileInView={{ opacity: 1, y: 0 }}
               onClick={handleClose}
             >
-              Close
+              Play as Guest
             </motion.button>
           </div>
           <Reveal x={-500}>
