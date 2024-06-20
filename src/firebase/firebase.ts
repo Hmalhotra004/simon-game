@@ -4,7 +4,7 @@ import { getAuth } from "firebase/auth";
 import "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  apiKey: "AIzaSyDivDXvtJJb5vjUTJ_VRmxhhWDFSZK_YuU",
   authDomain: "simon-game-621d9.firebaseapp.com",
   projectId: "simon-game-621d9",
   storageBucket: "simon-game-621d9.appspot.com",
