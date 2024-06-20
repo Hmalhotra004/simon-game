@@ -3,7 +3,7 @@ import "firebase/auth";
 import { getAuth } from "firebase/auth";
 import "firebase/firestore";
 
-const clientCred = {
+const firebaseConfig = {
   apiKey: process.env.FIREBASE_API_KEY,
   authDomain: process.env.FIREBASE_AUTH_DOMAIN,
   projectId: process.env.FIREBASE_PROJECT_ID,
@@ -12,7 +12,7 @@ const clientCred = {
   appId: process.env.FIREBASE_APP_ID,
 };
 
-const app = initializeApp(clientCred);
+const app = initializeApp(firebaseConfig);
 
 const auth = getAuth(app);
 

@@ -42,7 +42,7 @@ const Form = () => {
             Go Back
           </motion.button>
         </div>
-        <button>Goole</button>
+        <button>Google</button>
       </form>
       <motion.div
         initial={{ opacity: 0, y: 50 }}
