@@ -7,7 +7,7 @@ import "./utils.scss";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "The Simon Game",
+  title: "Simon Game",
 };
 
 export default function RootLayout({
