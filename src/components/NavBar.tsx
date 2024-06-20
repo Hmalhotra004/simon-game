@@ -27,12 +27,13 @@ const Authorized = () => {
 
   return (
     <>
-      <button
+      <Link
+        href="/leaderboard"
         id={styles.btn}
         className={styles.lb}
       >
-        LeaderBoard
-      </button>
+        Leaderboard
+      </Link>
       <button
         id={styles.btn}
         className={styles.lo}
