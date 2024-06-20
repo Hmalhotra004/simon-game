@@ -1,13 +1,14 @@
-"use client";
-import { metadata } from "@/components/meta";
-import AuthContextProvider from "@/Context/AuthContext";
+import Context from "@/Context/Context";
+import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./modern.css";
 import "./utils.scss";
 
 const inter = Inter({ subsets: ["latin"] });
 
-metadata;
+export const metadata: Metadata = {
+  title: "The Simon Game",
+};
 
 export default function RootLayout({
   children,
@@ -17,7 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <AuthContextProvider>{children}</AuthContextProvider>
+        <Context>{children}</Context>
       </body>
     </html>
   );
