@@ -41,6 +41,12 @@ const Form = () => {
         <form id={styles.form}>
           <Reveal>
             <input
+              type="text"
+              placeholder="Name"
+            ></input>
+          </Reveal>
+          <Reveal>
+            <input
               type="email"
               placeholder="Email"
             ></input>
