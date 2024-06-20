@@ -5,11 +5,14 @@
   justify-content: flex-end;
   align-items: center;
   padding: 1rem;
+
+  a {
+    text-decoration: none;
+  }
 }
 
 .lb {
   margin-right: auto;
-  text-decoration: none;
 }
 
 #btn {

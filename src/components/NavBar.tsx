@@ -54,18 +54,22 @@ const NotAuthorized = () => {
       >
         How To Play
       </Link>
-      <button
+
+      <Link
+        href="/signup"
         id={styles.btn}
         className={styles.lo}
       >
         Sign Up
-      </button>
-      <button
+      </Link>
+
+      <Link
+        href="/login"
         id={styles.btn}
         className={styles.lo}
       >
         Log In
-      </button>
+      </Link>
     </>
   );
 };

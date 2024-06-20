@@ -112,30 +112,26 @@ const Simon = ({ level, setLevel }: Props) => {
     <section className="container">
       <NavBar />
       <div className="main">
-        {/* {(!user || !modal) && <Modal />} */}
-
-        <>
-          <Reveal x={-800}>
-            <button
-              id="level-title"
-              onClick={handleStart}
-            >
-              {level.title}
-            </button>
-          </Reveal>
-          {user && <HighScore score={level.value} />}
-          <div className="btn-wrapper">
-            {COLOURS.map((col, idx) => (
-              <PlayButton
-                key={idx}
-                btn={col}
-                onClick={(e: React.MouseEvent) => handleBtnClick(e)}
-                disabled={!isStart}
-                isAnimating={animatingButton === col}
-              />
-            ))}
-          </div>
-        </>
+        <Reveal x={-800}>
+          <button
+            id="level-title"
+            onClick={handleStart}
+          >
+            {level.title}
+          </button>
+        </Reveal>
+        {user && <HighScore score={level.value} />}
+        <div className="btn-wrapper">
+          {COLOURS.map((col, idx) => (
+            <PlayButton
+              key={idx}
+              btn={col}
+              onClick={(e: React.MouseEvent) => handleBtnClick(e)}
+              disabled={!isStart}
+              isAnimating={animatingButton === col}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );
