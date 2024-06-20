@@ -3,7 +3,6 @@ import styles from "@/app/auth.module.scss";
 import Reveal from "@/components/Reveal";
 import { AuthContext } from "@/Context/AuthContext";
 import { motion } from "framer-motion";
-import { redirect } from "next/navigation";
 import { useContext } from "react";
 import "../page.scss";
 
@@ -11,9 +10,9 @@ const Form = () => {
   const { user, googleSignIn } = useContext(AuthContext);
 
   const handleGoogleSignIn = async () => {
+    console.log("h");
     try {
       await googleSignIn();
-      redirect("/");
     } catch (err) {
       console.log(err);
     }
