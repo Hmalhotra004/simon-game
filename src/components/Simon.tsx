@@ -1,5 +1,4 @@
 import { AuthContext } from "@/Context/AuthContext";
-import { ModalContext } from "@/Context/ModalContext";
 import "@/app/page.scss";
 import { useContext, useState } from "react";
 import HighScore from "./HighScore";
@@ -19,7 +18,6 @@ type Props = {
 };
 
 const Simon = ({ level, setLevel }: Props) => {
-  const { modal } = useContext(ModalContext);
   const { user } = useContext(AuthContext);
   //states
   const [isStart, setIsStart] = useState(false);
