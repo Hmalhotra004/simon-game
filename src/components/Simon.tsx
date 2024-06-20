@@ -1,8 +1,8 @@
+import { AuthContext } from "@/Context/AuthContext";
 import { ModalContext } from "@/Context/ModalContext";
 import "@/app/page.scss";
 import { useContext, useState } from "react";
 import HighScore from "./HighScore";
-import Modal from "./Modal";
 import NavBar from "./NavBar";
 import PlayButton from "./PlayButton";
 import Reveal from "./Reveal";
@@ -20,6 +20,7 @@ type Props = {
 
 const Simon = ({ level, setLevel }: Props) => {
   const { modal } = useContext(ModalContext);
+  const { user } = useContext(AuthContext);
   //states
   const [isStart, setIsStart] = useState(false);
   const [gamePattern, setGamePattern] = useState<string[]>([]);
@@ -109,33 +110,32 @@ const Simon = ({ level, setLevel }: Props) => {
   };
   return (
     <section className="container">
-      {!modal && <NavBar />}
+      <NavBar />
       <div className="main">
-        {modal && <Modal />}
-        {!modal && (
-          <>
-            <Reveal x={-800}>
-              <button
-                id="level-title"
-                onClick={handleStart}
-              >
-                {level.title}
-              </button>
-            </Reveal>
-            <HighScore score={level.value} />
-            <div className="btn-wrapper">
-              {COLOURS.map((col, idx) => (
-                <PlayButton
-                  key={idx}
-                  btn={col}
-                  onClick={(e: React.MouseEvent) => handleBtnClick(e)}
-                  disabled={!isStart}
-                  isAnimating={animatingButton === col}
-                />
-              ))}
-            </div>
-          </>
-        )}
+        {/* {(!user || !modal) && <Modal />} */}
+
+        <>
+          <Reveal x={-800}>
+            <button
+              id="level-title"
+              onClick={handleStart}
+            >
+              {level.title}
+            </button>
+          </Reveal>
+          {user && <HighScore score={level.value} />}
+          <div className="btn-wrapper">
+            {COLOURS.map((col, idx) => (
+              <PlayButton
+                key={idx}
+                btn={col}
+                onClick={(e: React.MouseEvent) => handleBtnClick(e)}
+                disabled={!isStart}
+                isAnimating={animatingButton === col}
+              />
+            ))}
+          </div>
+        </>
       </div>
     </section>
   );

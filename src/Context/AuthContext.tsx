@@ -4,10 +4,14 @@ import { createContext, useEffect, useState } from "react";
 
 type Modal = {
   user: User | null;
+  googleSignIn: () => void;
+  logOut: () => void;
 };
 
 export const AuthContext = createContext<Modal>({
   user: null,
+  googleSignIn: () => {},
+  logOut: () => {},
 });
 
 const AuthContextProvider = ({ children }: { children: React.ReactNode }) => {

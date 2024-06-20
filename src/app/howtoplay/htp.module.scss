@@ -1,0 +1,95 @@
+@import "../utils.scss";
+
+#window {
+  @include flex-cc;
+  color: $bg;
+  background-color: $title;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 1.5rem 2.5rem;
+  width: 90%;
+  max-width: 900px;
+  max-height: 1000px;
+  margin: 0 auto;
+
+  ::selection {
+    color: $title;
+    background-color: $bg;
+  }
+}
+
+#intro {
+  @include flex-cc;
+  justify-content: flex-end;
+  margin-bottom: 0.5rem;
+
+  h1 {
+    font-size: clamp($size-3xl, 3vw, $size-8xl);
+  }
+
+  h4 {
+    font-size: clamp($size-xl, 2vw, $size-2xl);
+  }
+}
+
+#main {
+  @include flex-cc;
+
+  li {
+    font-size: clamp($size-base, 2vw, $size-xl);
+    text-align: justify;
+    margin: 0.2rem 0;
+  }
+}
+
+#foot {
+  div {
+    @include flex-c;
+    gap: 0.5rem;
+  }
+
+  a {
+    background-color: $bg;
+    padding: 0.5rem;
+    border-radius: 10px;
+    margin: 0.4rem 0rem;
+    transition: 0.2s linear;
+    font-size: clamp($size-base, 2vw, $size-lg);
+    color: $title;
+    text-decoration: none;
+    color: $title;
+
+    &:hover {
+      color: $bg;
+      background-color: $title;
+      font-weight: bold;
+      box-shadow: 5px 5px 10px $bg;
+    }
+  }
+}
+
+// 3xs
+// @media (min-width: 320px) {}
+
+// 2xs
+// @media (min-width: 375px) {}
+
+// xs
+// @media (min-width: 475px) {}
+
+// sm
+// @media (min-width: 640px) {}
+
+// md
+// @media (min-width: 768px) {}
+
+/* lg */
+// @media (min-width: 1024px) {}
+
+// xl
+// @media (min-width: 1280px) {}
+
+// 2xl
+// @media (min-width: 1536px) {}

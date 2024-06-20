@@ -22,49 +22,32 @@
   button {
     font-size: clamp($size-base, 2vw, $size-lg);
     background-color: $bg;
-    color: $title;
     padding: 0.5rem;
     border-radius: 10px;
     margin: 0.5rem 0rem;
     transition: 0.2s linear;
+    color: $title;
 
     &:hover {
+      color: $bg;
       background-color: $title;
       font-weight: bold;
-      color: $bg;
       box-shadow: 5px 5px 10px $bg;
     }
   }
+}
 
-  #intro {
-    @include flex-cc;
-    justify-content: flex-end;
-    margin-bottom: 0.5rem;
+#intro {
+  @include flex-cc;
+  justify-content: flex-end;
+  margin-bottom: 0.5rem;
 
-    h1 {
-      font-size: clamp($size-3xl, 3vw, $size-8xl);
-    }
-
-    h4 {
-      font-size: clamp($size-xl, 2vw, $size-2xl);
-    }
+  h1 {
+    font-size: clamp($size-3xl, 3vw, $size-8xl);
   }
 
-  #main {
-    @include flex-cc;
-
-    li {
-      font-size: clamp($size-base, 2vw, $size-xl);
-      text-align: justify;
-      margin: 0.2rem 0;
-    }
-  }
-
-  #foot {
-    div {
-      @include flex-c;
-      gap: 0.5rem;
-    }
+  h4 {
+    font-size: clamp($size-xl, 2vw, $size-2xl);
   }
 }
 

@@ -1,3 +1,4 @@
+import { AuthContext } from "@/Context/AuthContext";
 import { ModalContext } from "@/Context/ModalContext";
 import { motion } from "framer-motion";
 import { useContext } from "react";
@@ -5,7 +6,19 @@ import styles from "./modal.module.scss";
 import Reveal from "./Reveal";
 
 const Form = () => {
-  const { handleBack, text } = useContext(ModalContext);
+  const { handleBack, text, handleClose } = useContext(ModalContext);
+
+  const { user, googleSignIn, logOut } = useContext(AuthContext);
+
+  const handleGoogleSignIn = async () => {
+    try {
+      await googleSignIn();
+      handleClose();
+      handleBack();
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <>
@@ -42,13 +55,19 @@ const Form = () => {
             Go Back
           </motion.button>
         </div>
-        <button>Google</button>
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0, transition: { duration: 0.7 } }}
+          id={styles.hr}
+        />
       </form>
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0, transition: { duration: 0.7 } }}
-        id={styles.hr}
-      />
+      <motion.button
+        initial={{ opacity: 0, x: -50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        onClick={handleGoogleSignIn}
+      >
+        Google
+      </motion.button>
     </>
   );
 };
