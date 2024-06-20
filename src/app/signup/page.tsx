@@ -4,7 +4,7 @@ import Reveal from "@/components/Reveal";
 import { AuthContext } from "@/Context/AuthContext";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import "../page.scss";
 
 const Form = () => {
@@ -14,11 +14,16 @@ const Form = () => {
   const handleGoogleSignIn = async () => {
     try {
       await googleSignIn();
-      router.push("/");
     } catch (err) {
       console.log(err);
     }
   };
+
+  useEffect(() => {
+    if (user) {
+      router.push("/");
+    }
+  });
 
   return (
     <>

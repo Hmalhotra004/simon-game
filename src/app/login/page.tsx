@@ -3,11 +3,13 @@ import styles from "@/app/auth.module.scss";
 import Reveal from "@/components/Reveal";
 import { AuthContext } from "@/Context/AuthContext";
 import { motion } from "framer-motion";
-import { useContext } from "react";
+import { useRouter } from "next/navigation";
+import { useContext, useEffect } from "react";
 import "../page.scss";
 
 const Form = () => {
   const { user, googleSignIn } = useContext(AuthContext);
+  const router = useRouter();
 
   const handleGoogleSignIn = async () => {
     console.log("h");
@@ -17,6 +19,12 @@ const Form = () => {
       console.log(err);
     }
   };
+
+  useEffect(() => {
+    if (user) {
+      router.push("/");
+    }
+  });
 
   return (
     <>
