@@ -64,6 +64,7 @@ const Form = () => {
               type="text"
               placeholder="Name"
               ref={nameRef}
+              required
             ></input>
           </Reveal>
 
@@ -72,6 +73,7 @@ const Form = () => {
               type="email"
               placeholder="Email"
               ref={emailRef}
+              required
             ></input>
           </Reveal>
 
@@ -80,6 +82,7 @@ const Form = () => {
               type="password"
               placeholder="Password"
               ref={passwordRef}
+              required
             ></input>
           </Reveal>
 

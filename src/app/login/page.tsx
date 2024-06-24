@@ -4,17 +4,32 @@ import Reveal from "@/components/Reveal";
 import { AuthContext } from "@/Context/AuthContext";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useRef } from "react";
 import "../page.scss";
 
 const Form = () => {
-  const { user, googleSignIn } = useContext(AuthContext);
+  const { user, googleSignIn, handleFormAuth } = useContext(AuthContext);
   const router = useRouter();
+  const emailRef = useRef<HTMLInputElement>(null);
+  const passwordRef = useRef<HTMLInputElement>(null);
 
   const handleGoogleSignIn = async () => {
     console.log("h");
     try {
       await googleSignIn();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleFormSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
+
+    const email = emailRef.current?.value;
+    const password = passwordRef.current?.value;
+
+    try {
+      await handleFormAuth(name, email, password);
     } catch (err) {
       console.log(err);
     }
@@ -39,23 +54,32 @@ const Form = () => {
           </Reveal>
         </header>
 
-        <form id={styles.form}>
+        <form
+          id={styles.form}
+          onSubmit={handleFormSubmit}
+        >
           <Reveal>
             <input
               type="email"
               placeholder="Email"
+              ref={emailRef}
             ></input>
           </Reveal>
+
           <Reveal>
             <input
               type="password"
               placeholder="Password"
+              ref={passwordRef}
             ></input>
           </Reveal>
+
           <div>
             <motion.button
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
+              id={styles.btn}
+              type="submit"
             >
               Log In
             </motion.button>
@@ -71,6 +95,7 @@ const Form = () => {
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
           onClick={handleGoogleSignIn}
+          id={styles.btn}
         >
           Google
         </motion.button>
