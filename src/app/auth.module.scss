@@ -18,22 +18,22 @@
     color: $title;
     background-color: $bg;
   }
+}
 
-  button {
-    font-size: clamp($size-base, 2vw, $size-lg);
-    background-color: $bg;
-    padding: 0.5rem;
-    border-radius: 10px;
-    margin: 0.5rem 0rem;
-    transition: 0.2s linear;
-    color: $title;
+#btn {
+  font-size: clamp($size-base, 2vw, $size-lg);
+  background-color: $bg;
+  padding: 0.5rem;
+  border-radius: 10px;
+  margin: 0.5rem 0rem;
+  transition: 0.2s linear;
+  color: $title;
 
-    &:hover {
-      color: $bg;
-      background-color: $title;
-      font-weight: bold;
-      box-shadow: 5px 5px 10px $bg;
-    }
+  &:hover {
+    color: $bg;
+    background-color: $title;
+    font-weight: bold;
+    box-shadow: 5px 5px 10px $bg;
   }
 }
 
