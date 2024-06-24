@@ -19,4 +19,9 @@
   padding: 0.5rem;
   color: $title;
   font-size: clamp($size-base, 2vw, $size-2xl);
+  transition: 0.3s ease;
+
+  &:hover {
+    color: rgb(247, 223, 119);
+  }
 }
