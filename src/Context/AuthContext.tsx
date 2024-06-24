@@ -45,7 +45,7 @@ const AuthContextProvider = ({ children }: { children: React.ReactNode }) => {
   const handleSignIn = (email: Form, pass: Form) => {
     signInWithEmailAndPassword(auth, email, pass)
       .then(async credentials => {
-        const ref = doc(db, "simongame", credentials.user.uid);
+        const ref = doc(db, "simon", credentials.user.uid);
         const docSnap = await getDoc(ref);
 
         if (docSnap.exists()) {
