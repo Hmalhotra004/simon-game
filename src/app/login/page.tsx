@@ -8,7 +8,7 @@ import { useContext, useEffect, useRef } from "react";
 import "../page.scss";
 
 const Form = () => {
-  const { user, googleSignIn, handleFormAuth } = useContext(AuthContext);
+  const { user, googleSignIn, handleSignIn } = useContext(AuthContext);
   const router = useRouter();
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
@@ -29,7 +29,7 @@ const Form = () => {
     const password = passwordRef.current?.value;
 
     try {
-      console.log(email, password);
+      handleSignIn(email, password);
     } catch (err) {
       console.log(err);
     }
@@ -79,7 +79,7 @@ const Form = () => {
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               id={styles.btn}
-              type="submit"
+              type="button"
             >
               Log In
             </motion.button>

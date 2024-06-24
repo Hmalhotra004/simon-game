@@ -8,7 +8,7 @@ import { useContext, useEffect, useRef } from "react";
 import "../page.scss";
 
 const Form = () => {
-  const { user, googleSignIn, handleFormAuth } = useContext(AuthContext);
+  const { user, googleSignIn, handleSignUp } = useContext(AuthContext);
   const router = useRouter();
   const nameRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
@@ -30,7 +30,7 @@ const Form = () => {
     const password = passwordRef.current?.value;
 
     try {
-      await handleFormAuth(name, email, password);
+      await handleSignUp(name, email, password);
     } catch (err) {
       console.log(err);
     }

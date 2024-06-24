@@ -1,12 +1,13 @@
 import auth from "@/firebase/firebase";
-import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signOut, User } from "firebase/auth";
+import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, User } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 
 type Modal = {
   user: User | null;
   googleSignIn: () => void;
   logOut: () => void;
-  handleFormAuth: (name: Form, email: Form, pass: Form) => void;
+  handleSignUp: (name: Form, email: Form, pass: Form) => void;
+  handleSignIn: (email: Form, pass: Form) => void;
 };
 
 type Form = any;
@@ -15,7 +16,8 @@ export const AuthContext = createContext<Modal>({
   user: null,
   googleSignIn: () => {},
   logOut: () => {},
-  handleFormAuth: () => {},
+  handleSignUp: () => {},
+  handleSignIn: () => {},
 });
 
 const AuthContextProvider = ({ children }: { children: React.ReactNode }) => {
@@ -26,8 +28,18 @@ const AuthContextProvider = ({ children }: { children: React.ReactNode }) => {
     signInWithPopup(auth, provider);
   };
 
-  const handleFormAuth = (name: Form, email: Form, pass: Form) => {
+  const handleSignUp = (name: Form, email: Form, pass: Form) => {
     createUserWithEmailAndPassword(auth, email, pass)
+      .then(credentials => {
+        console.log(credentials);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
+  const handleSignIn = (email: Form, pass: Form) => {
+    signInWithEmailAndPassword(auth, email, pass)
       .then(credentials => {
         console.log(credentials);
       })
@@ -51,7 +63,8 @@ const AuthContextProvider = ({ children }: { children: React.ReactNode }) => {
     user,
     googleSignIn,
     logOut,
-    handleFormAuth,
+    handleSignUp,
+    handleSignIn,
   };
 
   return <AuthContext.Provider value={global}>{children}</AuthContext.Provider>;
