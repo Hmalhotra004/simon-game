@@ -29,7 +29,6 @@ const Form = () => {
     const email = emailRef.current?.value;
     const password = passwordRef.current?.value;
 
-    console.log({ name, email, password });
     try {
       await handleFormAuth(name, email, password);
     } catch (err) {
