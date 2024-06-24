@@ -79,7 +79,7 @@ const Form = () => {
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               id={styles.btn}
-              type="button"
+              type="submit"
             >
               Log In
             </motion.button>

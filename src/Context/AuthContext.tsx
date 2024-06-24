@@ -1,5 +1,6 @@
-import auth from "@/firebase/firebase";
+import auth, { db } from "@/firebase/firebase";
 import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, User } from "firebase/auth";
+import { doc, getDoc, setDoc } from "firebase/firestore";
 import { createContext, useEffect, useState } from "react";
 
 type Modal = {
@@ -30,8 +31,11 @@ const AuthContextProvider = ({ children }: { children: React.ReactNode }) => {
 
   const handleSignUp = (name: Form, email: Form, pass: Form) => {
     createUserWithEmailAndPassword(auth, email, pass)
-      .then(credentials => {
-        console.log(credentials);
+      .then(async credentials => {
+        const ref = doc(db, "simongame", credentials.user.uid);
+        await setDoc(ref, {
+          Name: name,
+        });
       })
       .catch(err => {
         console.log(err);
@@ -40,8 +44,19 @@ const AuthContextProvider = ({ children }: { children: React.ReactNode }) => {
 
   const handleSignIn = (email: Form, pass: Form) => {
     signInWithEmailAndPassword(auth, email, pass)
-      .then(credentials => {
-        console.log(credentials);
+      .then(async credentials => {
+        const ref = doc(db, "simongame", credentials.user.uid);
+        const docSnap = await getDoc(ref);
+
+        if (docSnap.exists()) {
+          sessionStorage.setItem(
+            "user-info",
+            JSON.stringify({
+              Name: docSnap.data().name,
+            })
+          );
+          sessionStorage.setItem("user-id", JSON.stringify(credentials.user));
+        }
       })
       .catch(err => {
         console.log(err);
