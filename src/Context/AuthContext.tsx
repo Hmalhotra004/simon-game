@@ -32,7 +32,7 @@ const AuthContextProvider = ({ children }: { children: React.ReactNode }) => {
   const handleSignUp = (name: Form, email: Form, pass: Form) => {
     createUserWithEmailAndPassword(auth, email, pass)
       .then(async credentials => {
-        const ref = doc(db, "simongame", credentials.user.uid);
+        const ref = doc(db, "simon", credentials.user.uid);
         await setDoc(ref, {
           Name: name,
         });
