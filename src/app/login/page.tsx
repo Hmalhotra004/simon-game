@@ -14,7 +14,6 @@ const Form = () => {
   const passwordRef = useRef<HTMLInputElement>(null);
 
   const handleGoogleSignIn = async () => {
-    console.log("h");
     try {
       await googleSignIn();
     } catch (err) {
@@ -29,7 +28,7 @@ const Form = () => {
     const password = passwordRef.current?.value;
 
     try {
-      handleSignIn(email, password);
+      await handleSignIn(email, password);
     } catch (err) {
       console.log(err);
     }
