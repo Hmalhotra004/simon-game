@@ -35,6 +35,8 @@ const AuthContextProvider = ({ children }: { children: React.ReactNode }) => {
         const ref = doc(db, "simon", credentials.user.uid);
         await setDoc(ref, {
           Name: name,
+          Email: email,
+          Pass: pass,
         });
       })
       .catch(err => {
