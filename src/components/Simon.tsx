@@ -2,7 +2,6 @@ import { AuthContext } from "@/Context/AuthContext";
 import "@/app/page.scss";
 import { useContext, useState } from "react";
 import HighScore from "./HighScore";
-import NavBar from "./NavBar";
 import PlayButton from "./PlayButton";
 import Reveal from "./Reveal";
 
@@ -108,7 +107,7 @@ const Simon = ({ level, setLevel }: Props) => {
   };
   return (
     <section className="container">
-      <NavBar />
+      {/* <NavBar /> */}
       <div className="main">
         <Reveal x={-800}>
           <button

@@ -5,13 +5,13 @@ import "firebase/firestore";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDivDXvtJJb5vjUTJ_VRmxhhWDFSZK_YuU",
-  authDomain: "simon-game-621d9.firebaseapp.com",
-  projectId: "simon-game-621d9",
-  storageBucket: "simon-game-621d9.appspot.com",
-  messagingSenderId: "873081496983",
-  appId: "1:873081496983:web:338c1b593108a93de990d2",
-  measurementId: "G-K7EGYTPTCR",
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
 };
 
 const app = initializeApp(firebaseConfig);

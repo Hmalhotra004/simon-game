@@ -1,5 +1,5 @@
 "use client";
-import styles from "@/app/auth.module.scss";
+import styles from "@/Styles/auth.module.scss";
 import Reveal from "@/components/Reveal";
 import { AuthContext } from "@/Context/AuthContext";
 import { motion } from "framer-motion";

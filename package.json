@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "dotenv": "^16.4.5",
     "encoding": "^0.1.13",
     "firebase": "^10.12.2",
     "firebaseui": "^6.1.0",

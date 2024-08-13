@@ -1,7 +1,7 @@
 "use client";
-import styles from "@/app/auth.module.scss";
 import Reveal from "@/components/Reveal";
 import { AuthContext } from "@/Context/AuthContext";
+import styles from "@/Styles/auth.module.scss";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { useContext, useEffect, useRef } from "react";
