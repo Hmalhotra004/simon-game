@@ -1,7 +1,5 @@
-import { AuthContext } from "@/Context/AuthContext";
 import "@/app/page.scss";
-import { useContext, useState } from "react";
-import HighScore from "./HighScore";
+import { useState } from "react";
 import PlayButton from "./PlayButton";
 import Reveal from "./Reveal";
 
@@ -17,7 +15,6 @@ type Props = {
 };
 
 const Simon = ({ level, setLevel }: Props) => {
-  const { user } = useContext(AuthContext);
   //states
   const [isStart, setIsStart] = useState(false);
   const [gamePattern, setGamePattern] = useState<string[]>([]);
@@ -117,7 +114,6 @@ const Simon = ({ level, setLevel }: Props) => {
             {level.title}
           </button>
         </Reveal>
-        {user && <HighScore score={level.value} />}
         <div className="btn-wrapper">
           {COLOURS.map((col, idx) => (
             <PlayButton

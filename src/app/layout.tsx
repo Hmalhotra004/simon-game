@@ -1,9 +1,7 @@
-import Context from "@/Context/Context";
 import type { Metadata } from "next";
 import { Inter, Press_Start_2P } from "next/font/google";
 import "./modern.css";
 import "./utils.scss";
-require("dotenv").config();
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,9 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={fonts}>
-        <Context>{children}</Context>
-      </body>
+      <body className={fonts}>{children}</body>
     </html>
   );
 }
