@@ -104,7 +104,6 @@ const Simon = ({ level, setLevel }: Props) => {
   };
   return (
     <section className="container">
-      {/* <NavBar /> */}
       <div className="main">
         <Reveal x={-800}>
           <button
